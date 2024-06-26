@@ -26,7 +26,6 @@ public class PlayerLimits : MonoBehaviour
         minX= - screenDimensions.x + distanceX;
         maxY= screenDimensions.y - distanceY;
         minY= - screenDimensions.y + distanceY;
-        Debug.Log(minX);
     }
 
     private void CalculateX()
