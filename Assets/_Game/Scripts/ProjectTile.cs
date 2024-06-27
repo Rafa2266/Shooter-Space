@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectTile : MonoBehaviour
 {
     [SerializeField] private float spped;
-    private float damage;
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
