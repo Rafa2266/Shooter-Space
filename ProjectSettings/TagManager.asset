@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerProjectTile
   - EnemyProjectTile
+  - Enemy
   layers:
   - Default
   - TransparentFX
