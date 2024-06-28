@@ -784,8 +784,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbd3bb2aefada34e8fef7aa5391d2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootAutomatic: 0
-  shootManual: 1
+  shootAutomatic: 1
+  shootManual: 0
 --- !u!4 &1447744680
 Transform:
   m_ObjectHideFlags: 0
