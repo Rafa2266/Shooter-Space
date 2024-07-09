@@ -6,10 +6,12 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     private FlashEffect flashEffect;
+    private Explosion explosion;
     // Start is called before the first frame update
     void Start()
     {
         flashEffect=this.GetComponent<FlashEffect>();
+        explosion=FindObjectOfType<Explosion>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class Enemy : MonoBehaviour
         }
         if (health <= 0)
         {
+            explosion.Explode(this.transform);
             Destroy(this.gameObject);
         }
         Destroy(target.gameObject);
