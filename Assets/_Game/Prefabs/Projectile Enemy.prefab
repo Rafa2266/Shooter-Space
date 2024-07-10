@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3170558808907857940}
   - component: {fileID: 3170558808907857941}
   - component: {fileID: 3170558808907857942}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Projectile Enemy
   m_TagString: EnemyProjectTile
   m_Icon: {fileID: 0}
@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spped: -2
+  damage: 0
 --- !u!1 &3170558808916398653
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3170558808916398652}
   - component: {fileID: 3170558808916398643}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

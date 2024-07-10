@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9080100219975267667}
   - component: {fileID: 9140846480515175195}
   - component: {fileID: 4168249700329836546}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -87,6 +87,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  projectTile: {fileID: 3170558808907857943, guid: 02562f8b589eb304fbec77e5d7feb604, type: 3}
+  spawnProjectTilePosition: {fileID: 9080100220147794190}
+  startInvokeShoot: 2.5
+  minShootValue: 5
+  maxShootValue: 7
 --- !u!114 &4168249700329836546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9080100220147794190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spawn projectile point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9080100221153717925}
   - component: {fileID: 9080100221153717946}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
