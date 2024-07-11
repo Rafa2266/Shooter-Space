@@ -651,6 +651,7 @@ GameObject:
   - component: {fileID: 1434725810}
   - component: {fileID: 1434725811}
   - component: {fileID: 1434725812}
+  - component: {fileID: 1434725813}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -755,6 +756,19 @@ MonoBehaviour:
   laserPrefab: {fileID: 6476763065572763077, guid: 2997645843999c641b3fbcf6eead4a91, type: 3}
   spawnPointPosition: {fileID: 677617936}
   firingRate: 0.25
+  health: 100
+--- !u!114 &1434725813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434725806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16977a07655a79e4db313b67c72b9d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1447744678
 GameObject:
   m_ObjectHideFlags: 0

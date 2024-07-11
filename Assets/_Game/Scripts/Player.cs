@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     private float timeToShot;
 
     private GameController gameController;
+
+    public int health;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,5 +42,12 @@ public class Player : MonoBehaviour
             timeToShot = 0f;
             return;
         }
+    }
+
+    public void Playerdeath()
+    {
+        Explosion explosion = gameController.gameObject.GetComponent<Explosion>();
+        explosion.Explode(this.transform);
+        this.gameObject.SetActive(false);
     }
 }
