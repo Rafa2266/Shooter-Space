@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject projectTile;
     [SerializeField] private Transform spawnProjectTilePosition;
     [SerializeField] private float startInvokeShoot,minShootValue,maxShootValue;
+    private GameController gameController;
+    private EnemySpawner enemySpawner;
 
 
     // Start is called before the first frame update
@@ -18,6 +20,8 @@ public class Enemy : MonoBehaviour
     {
         flashEffect=this.GetComponent<FlashEffect>();
         explosion=FindObjectOfType<Explosion>();
+        enemySpawner=FindObjectOfType<EnemySpawner>();
+        gameController=FindObjectOfType<GameController>();
         InvokeProjectTile();
     }
 
@@ -47,6 +51,12 @@ public class Enemy : MonoBehaviour
         {
             explosion.Explode(this.transform);
             Destroy(this.gameObject);
+            gameController.enemyCount--;
+            if(gameController.enemyCount == 0)
+            {
+                gameController.enemyCount = gameController.maxEnemies;
+                enemySpawner.SpawnUntilFull();
+            }
         }
         Destroy(target.gameObject);
     }
