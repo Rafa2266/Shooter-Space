@@ -11,9 +11,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float firingRate;
 
-    private float timeToShot;
+    private GameObject shield;
+
+    private float timeToShot, playerShieldDuration;
 
     private GameController gameController;
+
 
     public int health,maxHealth;
     // Start is called before the first frame update
@@ -21,12 +24,34 @@ public class Player : MonoBehaviour
     {
         gameController=FindObjectOfType<GameController>();
         health = maxHealth;
+        shield = this.transform.Find("Shield").gameObject;
+        playerShieldDuration = gameController.playerShieldDuration;
     }
 
     // Update is called once per frame
     void Update()
     {
         ShootProjectTile();
+    }
+
+    public void InvokePlayerShield()
+    {
+        InvokeRepeating("PlayerShield", 0f, 1f);
+    }
+    private void PlayerShield()
+    {
+        playerShieldDuration--;
+        if(playerShieldDuration>0)
+        {
+            shield.SetActive(true);
+            this.transform.GetComponent<CircleCollider2D>().enabled = false;
+        }
+        else
+        {
+            shield.SetActive(false);
+            this.transform.GetComponent<CircleCollider2D>().enabled = true;
+            CancelInvoke("PlayerShield");
+        }
     }
     private void ShootProjectTile()
     {
