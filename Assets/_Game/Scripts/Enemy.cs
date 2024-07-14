@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
         }
         if (health <= 0)
         {
+            gameController.CreateItem(this.transform);
             explosion.Explode(this.transform);
             Destroy(this.gameObject);
             gameController.enemyCount--;

@@ -5,12 +5,13 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public bool shootAutomatic, shootManual;
-    public float rotatePartsSpeed, playerShieldDuration;
+    public float rotatePartsSpeed, playerShieldDuration,itemSpeed;
     [HideInInspector] public int enemyCount;
     public int maxEnemies;
 
     private UIController uiController;
     private Player player;
+    [SerializeField] private GameObject[] items;
 
     private Color32 greenColorHealth=new Color32(0,128,0,255);
     private Color32 orangeColorHealth=new Color32(255,165,0,255);
@@ -44,6 +45,24 @@ public class GameController : MonoBehaviour
         else
         {
            fill.color = redColorHealth;
+        }
+    }
+
+    public void PlayerFullHealth()
+    {
+        UnityEngine.UI.Image fill = uiController.sliderPlayerHealth.transform.Find("Fill Area").GetComponentInChildren<UnityEngine.UI.Image>();
+        player.health = player.maxHealth;
+        uiController.sliderPlayerHealth.value= player.health;
+        fill.color = greenColorHealth;
+    }
+
+    public void CreateItem(Transform enemy)
+    {
+        int randomNumber = Random.Range(1, 101);
+
+        if (randomNumber >= 75)
+        {
+            GameObject tempItem = Instantiate(items[Random.Range(0, items.Length)], enemy.transform.position, Quaternion.identity);
         }
     }
 }

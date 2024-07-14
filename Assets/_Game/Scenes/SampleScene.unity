@@ -522,6 +522,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7cb0d41e92d8774aa55d4bfae0e252c, type: 3}
+--- !u!1 &1061108096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061108098}
+  - component: {fileID: 1061108097}
+  m_Layer: 0
+  m_Name: Item Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1061108097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061108096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d622b840daf41e409ec952a3af30178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1061108098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061108096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.48051977, y: -2.0130172, z: 0.17173022}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1189926308
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,8 +645,12 @@ MonoBehaviour:
   shootManual: 0
   rotatePartsSpeed: 100
   playerShieldDuration: 10
+  itemSpeed: 5
   enemyCount: 0
   maxEnemies: 6
+  items:
+  - {fileID: 7102728716013213235, guid: 280101dfa89f58947b61083cf4bcfca5, type: 3}
+  - {fileID: 5194819712792028038, guid: fce02806a433cf64c8f6fe4ef692416f, type: 3}
 --- !u!4 &1447744680
 Transform:
   m_ObjectHideFlags: 0
@@ -616,7 +664,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1447744681
 MonoBehaviour:
@@ -972,6 +1020,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4073171388391865559, guid: 2c869e09501c3f046a0c2a310b951ffb, type: 3}
+      propertyPath: distanceY
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4073171389734658249, guid: 2c869e09501c3f046a0c2a310b951ffb, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -999,7 +1051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4990631941915156445, guid: d8ad94bee05df6e44a761197c42e2d77, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4990631941915156445, guid: d8ad94bee05df6e44a761197c42e2d77, type: 3}
       propertyPath: m_LocalPosition.x
