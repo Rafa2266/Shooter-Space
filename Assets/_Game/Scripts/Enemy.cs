@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float startInvokeShoot,minShootValue,maxShootValue;
     private GameController gameController;
     private EnemySpawner enemySpawner;
+    [SerializeField] AudioClip deathAudio;
 
 
     // Start is called before the first frame update
@@ -49,6 +50,8 @@ public class Enemy : MonoBehaviour
         }
         if (health <= 0)
         {
+            this.gameObject.GetComponent<AudioSource>().clip = deathAudio;
+            this.gameObject.GetComponent<AudioSource>().Play();
             gameController.CreateItem(this.transform);
             explosion.Explode(this.transform);
             Destroy(this.gameObject);

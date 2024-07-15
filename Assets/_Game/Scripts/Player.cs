@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
 
     private GameController gameController;
 
+    [SerializeField] AudioClip deathAudio;
+
 
     public int health,maxHealth;
     // Start is called before the first frame update
@@ -72,6 +74,8 @@ public class Player : MonoBehaviour
 
     public void Playerdeath()
     {
+        this.gameObject.GetComponent<AudioSource>().clip = deathAudio;
+        this.gameObject.GetComponent<AudioSource>().Play();
         Explosion explosion = gameController.gameObject.GetComponent<Explosion>();
         explosion.Explode(this.transform);
         this.gameObject.SetActive(false);
