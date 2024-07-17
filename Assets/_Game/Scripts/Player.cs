@@ -57,27 +57,30 @@ public class Player : MonoBehaviour
     }
     private void ShootProjectTile()
     {
-        timeToShot += Time.deltaTime;
-        if(gameController.shootManual && Input.touchCount>0 && Input.GetTouch(0).phase==TouchPhase.Began && timeToShot>=firingRate)
+        if (health > 0)
         {
-            GameObject tempProjectTile= Instantiate(laserPrefab,spawnPointPosition.position,Quaternion.identity);
-            timeToShot = 0f;
-            return;
+            timeToShot += Time.deltaTime;
+            if(gameController.shootManual && Input.touchCount>0 && Input.GetTouch(0).phase==TouchPhase.Began && timeToShot>=firingRate)
+            {
+                GameObject tempProjectTile= Instantiate(laserPrefab,spawnPointPosition.position,Quaternion.identity);
+                timeToShot = 0f;
+                return;
+            }
+            else if (gameController.shootAutomatic && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary && timeToShot >= firingRate)
+            {
+                GameObject tempProjectTile = Instantiate(laserPrefab, spawnPointPosition.position, Quaternion.identity);
+                timeToShot = 0f;
+                return;
+            }
         }
-        else if (gameController.shootAutomatic && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary && timeToShot >= firingRate)
-        {
-            GameObject tempProjectTile = Instantiate(laserPrefab, spawnPointPosition.position, Quaternion.identity);
-            timeToShot = 0f;
-            return;
-        }
+        
     }
 
     public void Playerdeath()
     {
-        this.gameObject.GetComponent<AudioSource>().clip = deathAudio;
-        this.gameObject.GetComponent<AudioSource>().Play();
         Explosion explosion = gameController.gameObject.GetComponent<Explosion>();
-        explosion.Explode(this.transform);
+        explosion.Explode(this.transform,deathAudio);
         this.gameObject.SetActive(false);
     }
+
 }

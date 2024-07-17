@@ -39,7 +39,11 @@ public class Enemy : MonoBehaviour
 
     private void ShootProjectTile()
     {
-        GameObject tempProjectTile = Instantiate(projectTile,spawnProjectTilePosition.position,Quaternion.identity) as GameObject;
+        if (health > 0)
+        {
+            GameObject tempProjectTile = Instantiate(projectTile,spawnProjectTilePosition.position,Quaternion.identity) as GameObject;
+        }
+        
     }
     private void OnTriggerEnter2D(Collider2D target)
     {
@@ -53,7 +57,7 @@ public class Enemy : MonoBehaviour
             this.gameObject.GetComponent<AudioSource>().clip = deathAudio;
             this.gameObject.GetComponent<AudioSource>().Play();
             gameController.CreateItem(this.transform);
-            explosion.Explode(this.transform);
+            explosion.Explode(this.transform,deathAudio);
             Destroy(this.gameObject);
             gameController.enemyCount--;
             if(gameController.enemyCount == 0)
