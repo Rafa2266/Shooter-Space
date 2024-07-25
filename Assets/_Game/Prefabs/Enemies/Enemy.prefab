@@ -95,6 +95,7 @@ MonoBehaviour:
   minShootValue: 5
   maxShootValue: 7
   deathAudio: {fileID: 8300000, guid: 9622a219b3303ec43896a277883da6a4, type: 3}
+  pointValue: 15
 --- !u!114 &4168249700329836546
 MonoBehaviour:
   m_ObjectHideFlags: 0

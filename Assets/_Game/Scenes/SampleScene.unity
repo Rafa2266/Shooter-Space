@@ -995,7 +995,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9589d5520e32e0479d12c56a6534ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderPlayerHealth: {fileID: 0}
+  sliderPlayerHealth: {fileID: 1199635855}
+  txtScore: {fileID: 84874121}
 --- !u!4 &1189926310
 Transform:
   m_ObjectHideFlags: 0
@@ -1011,6 +1012,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1199635855 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4073171388379161434, guid: 2c869e09501c3f046a0c2a310b951ffb, type: 3}
+  m_PrefabInstance: {fileID: 19776914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1289542248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,6 +1414,7 @@ MonoBehaviour:
   items:
   - {fileID: 7102728716013213235, guid: 280101dfa89f58947b61083cf4bcfca5, type: 3}
   - {fileID: 5194819712792028038, guid: fce02806a433cf64c8f6fe4ef692416f, type: 3}
+  currentScore: 0
 --- !u!4 &1447744680
 Transform:
   m_ObjectHideFlags: 0

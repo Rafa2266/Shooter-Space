@@ -16,9 +16,12 @@ public class GameController : MonoBehaviour
     private Color32 greenColorHealth=new Color32(0,128,0,255);
     private Color32 orangeColorHealth=new Color32(255,165,0,255);
     private Color32 redColorHealth=new Color32(255,0,0,255);
+
+    [HideInInspector] public int currentScore;
     // Start is called before the first frame update
     void Start()
     {
+        currentScore= 0;
         enemyCount = maxEnemies;
         uiController=FindObjectOfType<UIController>();
         player=FindObjectOfType<Player>();

@@ -12,8 +12,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform spawnProjectTilePosition;
     [SerializeField] private float startInvokeShoot,minShootValue,maxShootValue;
     private GameController gameController;
+    private UIController uiController;
     private EnemySpawner enemySpawner;
     [SerializeField] AudioClip deathAudio;
+    [SerializeField] private int pointValue;
 
 
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour
         explosion=FindObjectOfType<Explosion>();
         enemySpawner=FindObjectOfType<EnemySpawner>();
         gameController=FindObjectOfType<GameController>();
+        uiController=FindObjectOfType<UIController>();
         InvokeProjectTile();
     }
 
@@ -60,6 +63,9 @@ public class Enemy : MonoBehaviour
             explosion.Explode(this.transform,deathAudio);
             Destroy(this.gameObject);
             gameController.enemyCount--;
+            gameController.currentScore += pointValue;
+            uiController.UpdateScore();
+
             if(gameController.enemyCount == 0)
             {
                 gameController.enemyCount = gameController.maxEnemies;
