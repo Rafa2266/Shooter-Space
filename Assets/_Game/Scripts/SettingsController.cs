@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour
+public class SettingsController : MonoBehaviour
 {
-    private static SceneController instance;
+    private static SettingsController instance;
+    public bool soundOnOff;
 
     private void Awake()
     {
@@ -22,11 +22,7 @@ public class SceneController : MonoBehaviour
     {
         
     }
-    
-    public void loadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
+
     private void MakePersistent()
     {
         if (instance == null)
@@ -38,5 +34,17 @@ public class SceneController : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this);
+    }
+
+    public void SoundOnOff()
+    {
+        if (soundOnOff)
+        {
+            soundOnOff= false;
+        }
+        else
+        {
+            soundOnOff= true;
+        }
     }
 }
