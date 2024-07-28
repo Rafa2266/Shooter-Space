@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
 
     public void Playerdeath()
     {
+        gameController.GameOver();
         Explosion explosion = gameController.gameObject.GetComponent<Explosion>();
         explosion.Explode(this.transform,deathAudio);
         this.gameObject.SetActive(false);

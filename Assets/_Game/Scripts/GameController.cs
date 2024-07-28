@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     private Color32 redColorHealth=new Color32(255,0,0,255);
 
     [HideInInspector] public int currentScore;
+    [HideInInspector] public bool gameover;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,5 +68,33 @@ public class GameController : MonoBehaviour
         {
             GameObject tempItem = Instantiate(items[Random.Range(0, items.Length)], enemy.transform.position, Quaternion.identity);
         }
+    }
+
+    public void GameOver()
+    {
+        gameover= true;
+        player.gameObject.SetActive(false);
+        player.health = 0;
+        StartCoroutine(RestartDelay());
+        
+    }
+
+    public void RestartGame()
+    {
+        gameover = false;
+        player.gameObject.SetActive(true);
+        player.health = player.maxHealth;
+        uiController.sliderPlayerHealth.value= player.health;
+        currentScore= 0;
+        uiController.txtScore.text= "Score :" + currentScore.ToString();
+        UnityEngine.UI.Image fill = uiController.sliderPlayerHealth.transform.Find("Fill Area").GetComponentInChildren<UnityEngine.UI.Image>();
+        fill.color = greenColorHealth;
+
+    }
+
+    public IEnumerator RestartDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        RestartGame();
     }
 }
