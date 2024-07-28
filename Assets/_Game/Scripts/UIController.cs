@@ -39,7 +39,11 @@ public class UIController : MonoBehaviour
     {
         panelPause.SetActive(false);
         panelGame.SetActive(true);
+        GameData gameData = FindObjectOfType<GameData>();
+        SettingsController settingsController=FindObjectOfType<SettingsController>();
+        gameData.SaveSounds(settingsController.soundOnOff);
         Time.timeScale = 1f;
+        
     }
 
     public void ButtonBackMainMenu(string sceneName)

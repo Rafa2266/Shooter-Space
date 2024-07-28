@@ -26,6 +26,9 @@ public class UiControllerMainMenu : MonoBehaviour
     {
         panelSettings.SetActive(false);
         panelOptions.SetActive(true);
+        GameData gameData = FindObjectOfType<GameData>();
+        SettingsController settingsController = FindObjectOfType<SettingsController>();
+        gameData.SaveSounds(settingsController.soundOnOff);
 
     }
 

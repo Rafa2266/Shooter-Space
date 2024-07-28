@@ -76,6 +76,12 @@ public class GameController : MonoBehaviour
         player.gameObject.SetActive(false);
         player.health = 0;
         StartCoroutine(RestartDelay());
+        GameData gameData= FindObjectOfType<GameData>();
+
+        if(gameData.highscore<currentScore)
+        {
+            gameData.SaveScore(currentScore);
+        }
         
     }
 
