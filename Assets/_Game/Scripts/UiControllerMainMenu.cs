@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiControllerMainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject panelSettings,panelOptions;
+    public Image imageFade;
+    [SerializeField] private Button buttonStart;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +35,11 @@ public class UiControllerMainMenu : MonoBehaviour
 
     }
 
-    public void ButtonStartGame(string sceneName)
+    public void ButtonStartGame()
     {
-        SceneController sceneController = FindObjectOfType<SceneController>();
-        sceneController.loadScene(sceneName);
+        buttonStart.interactable=false;
+        imageFade.gameObject.SetActive(true);
+        imageFade.gameObject.GetComponent<Animator>().SetTrigger("FadeIn");
     }
 
     public void ButtonSound()

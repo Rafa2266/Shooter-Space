@@ -87,6 +87,12 @@ public class GameController : MonoBehaviour
 
     public void RestartGame()
     {
+        uiController.imageFade.gameObject.SetActive(true);
+        uiController.imageFade.gameObject.GetComponent<Animator>().SetTrigger("FadeIn");
+    }
+
+    public void RestartGameplay()
+    {
         gameover = false;
         player.gameObject.SetActive(true);
         player.health = player.maxHealth;
@@ -95,7 +101,6 @@ public class GameController : MonoBehaviour
         uiController.txtScore.text= "Score :" + currentScore.ToString();
         UnityEngine.UI.Image fill = uiController.sliderPlayerHealth.transform.Find("Fill Area").GetComponentInChildren<UnityEngine.UI.Image>();
         fill.color = greenColorHealth;
-
     }
 
     public IEnumerator RestartDelay()
