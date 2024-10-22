@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
-    private static GameData instance;
     [HideInInspector] public int highscore;
+    public bool soundOnOff;
 
     private void Awake()
     {
-        MakePersistent();
+        soundOnOff = GetSounds();
     }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,18 +21,6 @@ public class GameData : MonoBehaviour
     void Update()
     {
         
-    }
-    private void MakePersistent()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-        DontDestroyOnLoad(this);
     }
 
     public void SaveScore(int highscore)
@@ -58,5 +45,18 @@ public class GameData : MonoBehaviour
             PlayerPrefs.SetInt("sounds", 0);
 
         }
+    }
+
+    public bool GetSounds()
+    {
+        if (PlayerPrefs.GetInt("sounds") == 0)
+        {
+            soundOnOff = false;
+        }
+        if (PlayerPrefs.GetInt("sounds") == 1)
+        {
+            soundOnOff = true;
+        }
+        return soundOnOff;
     }
 }

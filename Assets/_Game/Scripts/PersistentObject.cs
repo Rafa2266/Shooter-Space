@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicObject : MonoBehaviour
+public class PersistentObject : MonoBehaviour
 {
-    private static MusicObject instance;
+    private static PersistentObject instance;
 
     private void Awake()
     {
@@ -21,6 +21,7 @@ public class MusicObject : MonoBehaviour
     {
         
     }
+
     private void MakePersistent()
     {
         if (instance == null)
