@@ -57,8 +57,6 @@ public class Enemy : MonoBehaviour
         }
         if (health <= 0)
         {
-            this.gameObject.GetComponent<AudioSource>().clip = deathAudio;
-            this.gameObject.GetComponent<AudioSource>().Play();
             gameController.CreateItem(this.transform);
             explosion.Explode(this.transform,deathAudio);
             Destroy(this.gameObject);

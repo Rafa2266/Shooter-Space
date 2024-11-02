@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] AudioClip deathAudio;
 
+    private GameData gameData;
+
 
     public int health,maxHealth;
     // Start is called before the first frame update
@@ -28,6 +31,7 @@ public class Player : MonoBehaviour
         health = maxHealth;
         shield = this.transform.Find("Shield").gameObject;
         playerShieldDuration = gameController.playerShieldDuration;
+        gameData = FindObjectOfType<GameData>();
     }
 
     // Update is called once per frame
@@ -60,13 +64,13 @@ public class Player : MonoBehaviour
         if (health > 0)
         {
             timeToShot += Time.deltaTime;
-            if(gameController.shootManual && Input.touchCount>0 && Input.GetTouch(0).phase==TouchPhase.Began && timeToShot>=firingRate)
+            if(!gameData.shootStyle && Input.touchCount>0 && Input.GetTouch(0).phase==TouchPhase.Began && timeToShot>=firingRate! && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
             {
                 GameObject tempProjectTile= Instantiate(laserPrefab,spawnPointPosition.position,Quaternion.identity);
                 timeToShot = 0f;
                 return;
             }
-            else if (gameController.shootAutomatic && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary && timeToShot >= firingRate)
+            else if (gameData.shootStyle && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary && timeToShot >= firingRate && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
             {
                 GameObject tempProjectTile = Instantiate(laserPrefab, spawnPointPosition.position, Quaternion.identity);
                 timeToShot = 0f;

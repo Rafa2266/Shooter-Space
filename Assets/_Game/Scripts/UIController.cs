@@ -12,24 +12,60 @@ public class UIController : MonoBehaviour
     private GameController gameController;
     public TMP_Text txtScore;
     public Image imageFade;
+    public Toggle[] shootStyle;
 
     [SerializeField] private GameObject panelPause, panelGame;
     // Start is called before the first frame update
     void Start()
     {
-        gameController=FindObjectOfType<GameController>();
-        txtScore.text = "Score :" + gameController.currentScore.ToString();
+       Initialize();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Initialize()
     {
-        
+        gameController = FindObjectOfType<GameController>();
+        txtScore.text = "Score :" + gameController.currentScore.ToString();
+        GameData gameData = FindObjectOfType<GameData>();
+        bool value = gameData.GetShootStyle();
+
+        if (!value)
+        {
+            shootStyle[0].isOn= true;
+            shootStyle[1].isOn= false;
+            shootStyle[0].interactable = false;
+            shootStyle[1].interactable = true;
+        }
+        else
+        {
+            shootStyle[0].isOn = false;
+            shootStyle[1].isOn = true;
+            shootStyle[0].interactable = true;
+            shootStyle[1].interactable = false;
+        }
     }
+
     public void UpdateScore()
     {
         txtScore.text = "Score :" + gameController.currentScore.ToString();
     }
+
+    public void ToggleShootStyle()
+    {
+        GameData gameData = FindObjectOfType<GameData>();
+        if (shootStyle[0].isOn)
+        {
+            gameData.shootStyle = false;
+            shootStyle[0].interactable= false;
+            shootStyle[1].interactable= true;
+        }
+        else if (shootStyle[1].isOn) 
+        {
+            gameData.shootStyle = true;
+            shootStyle[0].interactable = true;
+            shootStyle[1].interactable = false;
+        }
+    }
+
     public void ButtonOpenPanelPause()
     {
         panelPause.SetActive(true);
@@ -43,6 +79,7 @@ public class UIController : MonoBehaviour
         GameData gameData = FindObjectOfType<GameData>();
         SettingsController settingsController=FindObjectOfType<SettingsController>();
         gameData.SaveSounds(gameData.soundOnOff);
+        gameData.saveShootStyle(gameData.shootStyle);
         Time.timeScale = 1f;
         
     }

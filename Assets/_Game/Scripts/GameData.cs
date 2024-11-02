@@ -5,16 +5,31 @@ using UnityEngine;
 public class GameData : MonoBehaviour
 {
     [HideInInspector] public int highscore;
-    public bool soundOnOff;
+    public bool soundOnOff, shootStyle;
+    private int firstGameplay = 0;
 
     private void Awake()
     {
-        soundOnOff = GetSounds();
+        firstGameplay = PlayerPrefs.GetInt("firstGameplay");
     }
     // Start is called before the first frame update
     void Start()
     {
-        highscore=GetScore();
+        if(firstGameplay == 0)
+        {
+            soundOnOff= true;
+            shootStyle= true;
+            SaveSounds(soundOnOff);
+            saveShootStyle(shootStyle);
+            PlayerPrefs.SetInt("firstGameplay", 1);
+        }
+        else
+        {
+            soundOnOff= GetSounds();
+            shootStyle=GetShootStyle();
+            highscore=GetScore();
+        }
+       
     }
 
     // Update is called once per frame
@@ -58,5 +73,30 @@ public class GameData : MonoBehaviour
             soundOnOff = true;
         }
         return soundOnOff;
+    }
+
+    public void saveShootStyle(bool shootStyle)
+    {
+        if (shootStyle)
+        {
+            PlayerPrefs.SetInt("shootStyle", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("shootStyle", 0);
+
+        }
+    }
+    public bool GetShootStyle()
+    {
+        if (PlayerPrefs.GetInt("shootStyle") == 0)
+        {
+            shootStyle = false;
+        }
+        if (PlayerPrefs.GetInt("shootStyle") == 1)
+        {
+            shootStyle = true;
+        }
+        return shootStyle;
     }
 }
