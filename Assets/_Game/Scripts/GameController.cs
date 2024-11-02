@@ -98,13 +98,17 @@ public class GameController : MonoBehaviour
 
     public void RestartGameplay()
     {
+        EnemySpawner enemySpawner= FindObjectOfType<EnemySpawner>();
         player.transform.position = playerStartPosition.position;
         gameover = false;
         player.gameObject.SetActive(true);
         player.health = player.maxHealth;
+       
         uiController.sliderPlayerHealth.value= player.health;
         currentScore= 0;
         uiController.txtScore.text= "Score :" + currentScore.ToString();
+        enemyCount = maxEnemies;
+        enemySpawner.SpawnUntilFull();
         UnityEngine.UI.Image fill = uiController.sliderPlayerHealth.transform.Find("Fill Area").GetComponentInChildren<UnityEngine.UI.Image>();
         fill.color = greenColorHealth;
         foreach(Transform child in allParts.transform)
