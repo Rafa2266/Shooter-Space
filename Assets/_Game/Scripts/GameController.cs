@@ -81,6 +81,13 @@ public class GameController : MonoBehaviour
         player.gameObject.SetActive(false);
         player.health = 0;
         StartCoroutine(RestartDelay());
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {GameObject.Destroy(enemy);
+
+        }
+            
         GameData gameData= FindObjectOfType<GameData>();
 
         if(gameData.highscore<currentScore)
@@ -97,7 +104,7 @@ public class GameController : MonoBehaviour
     }
 
     public void RestartGameplay()
-    {
+    {  
         EnemySpawner enemySpawner= FindObjectOfType<EnemySpawner>();
         player.transform.position = playerStartPosition.position;
         gameover = false;
@@ -123,7 +130,7 @@ public class GameController : MonoBehaviour
 
     public IEnumerator RestartDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         RestartGame();
     }
 }
